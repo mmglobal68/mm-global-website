@@ -86,7 +86,7 @@
   .course ul{list-style:none;margin:0 0 20px}
   .course li{padding:6px 0 6px 26px;position:relative;color:#39445c;font-size:15px}
   .course li:before{content:"✓";position:absolute;left:0;color:var(--gold);font-weight:800}
-  .course .cb a{margin-top:auto;color:var(--navy);font-weight:800;text-decoration:none}
+  .course .cb a{color:var(--navy);font-weight:800;text-decoration:none}
   .course .cb a:hover{color:var(--gold)}
   .hcard img.photo{width:calc(100% + 56px);max-width:none;margin:-30px -28px 22px;height:225px;object-fit:cover;display:block}
   .cimg{width:100%;height:150px;object-fit:cover;display:block}
@@ -104,13 +104,14 @@
   .pstrip span{font-size:12.5px;letter-spacing:2.5px;font-weight:700;color:var(--mut)}
   .pstrip b{font-family:'Manrope';font-weight:800;font-size:19px;color:var(--navy);opacity:.75}
   .pstrip i{color:var(--gold);font-style:normal;font-weight:800}
-  .fee{margin:0 0 16px}
+  .fee{margin:auto 0 16px;padding-top:18px}
   .fee span{display:block;font-size:11.5px;letter-spacing:2px;font-weight:700;color:var(--gold)}
   .fee b{font-family:'Manrope';font-size:22px;font-weight:800;color:var(--navy)}
   .fee s{color:var(--mut);font-size:15.5px;margin-left:8px;font-weight:600}
   .fee .tag{display:inline-block;margin-left:9px;background:#fdf3d7;color:#8a6d1f;font-size:11px;letter-spacing:1px;padding:3px 9px;border-radius:999px;vertical-align:3px}
   .meta{display:flex;gap:7px;flex-wrap:wrap;margin:-6px 0 16px}
   .meta b{background:var(--bg);border:1px solid var(--line);color:var(--navy);font-size:12px;font-weight:700;padding:4px 10px;border-radius:999px}
+  @media(min-width:641px){.course ul{min-height:122px}.course .meta{min-height:58px}}
   .outline-li li, #outlines li{padding:4px 0 4px 24px;position:relative;color:#39445c;font-size:15px;list-style:none}
   #outlines li:before{content:"✓";position:absolute;left:0;color:var(--gold);font-weight:800}
   /* Sales snapshots */
