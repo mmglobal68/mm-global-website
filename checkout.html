@@ -139,7 +139,7 @@ footer img{width:56px;height:56px;border-radius:10px;background:#fff;padding:3px
     <a href="index.html#story">Our Story</a>
     <a href="info.html">Get Info</a>
   </nav>
-  <a href="cart.html"><button class="cartbtn">🛒 Cart <em id="ccount">0</em></button></a>
+
 </div></header>
 
 <script>
@@ -174,7 +174,8 @@ updCount();
   </div>
 </div>
 <script>
-const c=getCart();
+const _q=new URLSearchParams(location.search);
+const c=(_q.get('course')&&ITEMS[_q.get('course')])?[_q.get('course')]:getCart();
 document.getElementById('ckSum').innerHTML=c.length?c.map(k=>'<div><span>'+ITEMS[k].name+'</span><span>Rs '+ITEMS[k].price.toLocaleString('en-PK')+'</span></div>').join(''):'<div><span>No course selected</span><span>—</span></div>';
 const total=c.reduce((s,k)=>s+ITEMS[k].price,0);
 document.getElementById('ckTotal').textContent='Rs '+total.toLocaleString('en-PK');
@@ -184,7 +185,7 @@ const ckF=document.getElementById('ckForm');
 ['name','whatsapp','email','city'].forEach(function(n){const el=ckF.elements[n];if(!el)return;const v=localStorage.getItem('mmg_ck_'+n);if(v&&!el.value)el.value=v;el.addEventListener('input',function(){localStorage.setItem('mmg_ck_'+n,el.value)})});
 const DASH_URL='';
 ckF.addEventListener('submit',async function(e){e.preventDefault();
- if(!c.length){document.getElementById('ckMsg').textContent='Pehle cart mein koi course add karein.';return}
+ if(!c.length){document.getElementById('ckMsg').textContent='Pehle koi course chunein — Trainings mein ja kar Enroll Now dabayein.';return}
  const btn=document.getElementById('ckBtn');btn.disabled=true;btn.textContent='Placing order…';
  const fd=new FormData(this);
  try{const r=await fetch('https://formspree.io/f/xzeewwer',{method:'POST',body:fd,headers:{'Accept':'application/json'}});

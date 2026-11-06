@@ -139,7 +139,7 @@ footer img{width:56px;height:56px;border-radius:10px;background:#fff;padding:3px
     <a href="index.html#story">Our Story</a>
     <a href="info.html">Get Info</a>
   </nav>
-  <a href="cart.html"><button class="cartbtn">🛒 Cart <em id="ccount">0</em></button></a>
+
 </div></header>
 
 <script>
@@ -153,24 +153,12 @@ updCount();
 </script>
 
 
-<div class="wrap">
-  <h1 class="serif ptitle">Your Cart</h1>
-  <div class="panel" style="margin-top:16px">
-    <div id="cartRows"></div>
-    <div class="tot"><span>Total</span><span id="cartTotal">Rs 0</span></div>
-    <p style="color:var(--mut);font-size:13.5px">Bundle prices pehle se discounted hain — koi hidden charges nahi.</p>
-    <a class="btn gold big" href="checkout.html" style="text-align:center">Proceed to Checkout →</a>
-    <a class="btn big" href="index.html#trainings" style="background:#fff;border:1.6px solid var(--navy);color:var(--navy);text-align:center">Continue Browsing</a>
-  </div>
-</div>
-<script>
-function renderCart(){const c=getCart();const r=document.getElementById('cartRows');
- if(!c.length){r.innerHTML='<p style="color:var(--mut);padding:16px 0">Cart khaali hai — pehle koi course add karein.</p>'}
- else{r.innerHTML=c.map(k=>{const it=ITEMS[k];return '<div class="crow"><img src="'+it.img+'"><div class="t"><b>'+it.name+'</b><br><span style="color:var(--mut);font-size:13px">'+it.dur+'</span></div><b>Rs '+it.price.toLocaleString('en-PK')+'</b><button class="rm" onclick="rmCart(\''+k+'\')">Remove</button></div>'}).join('')}
- document.getElementById('cartTotal').textContent='Rs '+c.reduce((s,k)=>s+ITEMS[k].price,0).toLocaleString('en-PK')}
-function rmCart(k){setCart(getCart().filter(x=>x!==k));renderCart()}
-renderCart();
-</script>
+<div class="wrap"><div class="panel" style="max-width:560px;margin:40px auto;text-align:center">
+<h1 class="serif" style="font-size:26px;color:var(--navy)">Enroll Now</h1>
+<p style="color:var(--mut);margin-top:8px">Ab har course ke liye seedha <b>Enroll Now</b> hai — course chunein aur enroll karein.</p>
+<a class="btn gold" href="index.html#trainings" style="margin-top:16px">Courses Dekhein →</a>
+</div></div>
+<script>location.replace('index.html#trainings');</script>
 <footer><div class="wrap">
   <img src="logo.png" alt="MM Global">
   <div>© 2026 MM Global Training Institute — mmglobal.com.pk<br><span style="font-size:13px">Learn. Sell. Grow — Globally.</span></div>

@@ -3,6 +3,6 @@
 const q=new URLSearchParams(location.search);const course=q.get('course');const ref=q.get('ref');
 const map={'eBay':'ebay','Walmart':'walmart','Shopify':'shopify','Importing':'importing','Bundle: eBay + Walmart':'b1','Bundle: eBay + Walmart + Shopify':'b2','Bundle: All 4 Courses':'b3'};
 const pages={'ebay':'course-ebay.html','walmart':'course-walmart.html','shopify':'course-shopify.html','importing':'course-importing.html','b1':'bundle-ebay-walmart.html','b2':'bundle-ebay-walmart-shopify.html','b3':'bundle-all-4.html'};
-if(course&&map[course]){const c=JSON.parse(localStorage.getItem('mmg_cart')||'[]');if(!c.includes(map[course]))c.push(map[course]);localStorage.setItem('mmg_cart',JSON.stringify(c));location.replace('checkout.html'+(ref?('?ref='+encodeURIComponent(ref))':''))}
+if(course&&map[course]){location.replace('checkout.html?course='+map[course]+(ref?('&ref='+encodeURIComponent(ref)):''))}
 else location.replace('index.html#trainings');
 </script></head><body><p style="font-family:Arial;text-align:center;margin-top:40px">Redirecting… <a href="index.html">MM Global Training Institute</a></p></body></html>
