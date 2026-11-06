@@ -142,6 +142,17 @@ footer img{width:56px;height:56px;border-radius:10px;background:#fff;padding:3px
   <a href="cart.html"><button class="cartbtn">🛒 Cart <em id="ccount">0</em></button></a>
 </div></header>
 
+<script>
+const ITEMS={"ebay": {"name": "eBay Selling Boot Camp", "price": 12000, "img": "ebay.jpg", "dur": "Weekend Classes \u00b7 Online"}, "walmart": {"name": "Walmart Selling Boot Camp", "price": 12000, "img": "walmart.jpg", "dur": "Weekend Classes \u00b7 Online"}, "shopify": {"name": "Shopify eCommerce Boot Camp", "price": 10000, "img": "shopify.jpg", "dur": "Weekday Classes \u00b7 Online"}, "importing": {"name": "International Trade Pro \u2014 Importing", "price": 25000, "img": "importing.jpg", "dur": "Weekend Classes \u00b7 Online"}, "b1": {"name": "Bundle: eBay + Walmart", "price": 21600, "img": "ebay.jpg", "dur": "Weekend Classes \u00b7 Online"}, "b2": {"name": "Bundle: eBay + Walmart + Shopify", "price": 28900, "img": "shopify.jpg", "dur": "Weekend + Weekday \u00b7 Online"}, "b3": {"name": "Bundle: All 4 Courses", "price": 47200, "img": "importing.jpg", "dur": "Weekend + Weekday \u00b7 Online"}};
+function getCart(){try{return JSON.parse(localStorage.getItem('mmg_cart')||'[]')}catch(e){return[]}}
+function setCart(c){localStorage.setItem('mmg_cart',JSON.stringify(c));updCount()}
+function updCount(){const el=document.getElementById('ccount');if(el)el.textContent=getCart().length}
+function addCart(k){let c=getCart();if(!c.includes(k)){c.push(k);setCart(c)}toast(ITEMS[k].name+' — cart mein add ho gaya ✓');updCount()}
+function toast(m){let t=document.getElementById('toast');if(!t){t=document.createElement('div');t.id='toast';t.className='toast';document.body.appendChild(t)}t.textContent=m;t.classList.remove('hide');setTimeout(()=>t.classList.add('hide'),2600)}
+updCount();
+</script>
+
+
 <div class="wrap">
   <h1 class="serif ptitle">Checkout</h1>
   <div class="ck">
@@ -151,8 +162,7 @@ footer img{width:56px;height:56px;border-radius:10px;background:#fff;padding:3px
         <div class="fld"><label>WhatsApp Number *</label><input name="whatsapp" required placeholder="03XX XXXXXXX"></div>
         <div class="fld"><label>Email Address *</label><input name="email" type="email" required placeholder="you@example.com"></div>
         <div class="fld"><label>City *</label><input name="city" required placeholder="Your city"></div>
-        <div class="fld"><label>Referral Code (optional — 10% OFF for you, 10% commission for your referrer)</label><input name="referral" id="ckRef" placeholder="Referral code"></div>
-        <div class="fld"><label>Coupon Code (optional)</label><input name="coupon" placeholder="Coupon code"></div>
+        <input type="hidden" name="referral" id="ckRef">
         <input type="hidden" name="order" id="ckOrder">
         <input type="hidden" name="_subject" value="New Booking — MM Global Training Institute">
         <button class="btn gold big" type="submit" id="ckBtn">Place Order → Payment</button>
@@ -170,12 +180,18 @@ const total=c.reduce((s,k)=>s+ITEMS[k].price,0);
 document.getElementById('ckTotal').textContent='Rs '+total.toLocaleString('en-PK');
 document.getElementById('ckOrder').value=c.map(k=>ITEMS[k].name).join(' + ')+' | Total: Rs '+total.toLocaleString('en-PK');
 const q=new URLSearchParams(location.search);if(q.get('ref'))document.getElementById('ckRef').value=q.get('ref');
-document.getElementById('ckForm').addEventListener('submit',async function(e){e.preventDefault();
+const ckF=document.getElementById('ckForm');
+['name','whatsapp','email','city'].forEach(function(n){const el=ckF.elements[n];if(!el)return;const v=localStorage.getItem('mmg_ck_'+n);if(v&&!el.value)el.value=v;el.addEventListener('input',function(){localStorage.setItem('mmg_ck_'+n,el.value)})});
+const DASH_URL='';
+ckF.addEventListener('submit',async function(e){e.preventDefault();
  if(!c.length){document.getElementById('ckMsg').textContent='Pehle cart mein koi course add karein.';return}
  const btn=document.getElementById('ckBtn');btn.disabled=true;btn.textContent='Placing order…';
  const fd=new FormData(this);
  try{const r=await fetch('https://formspree.io/f/xzeewwer',{method:'POST',body:fd,headers:{'Accept':'application/json'}});
-  if(r.ok){const ord='MMG'+(1000+Math.floor(Math.random()*9000));localStorage.removeItem('mmg_cart');location.href='payment.html?ord='+ord+'&total='+total}
+  if(r.ok){const ord='MMG'+(1000+Math.floor(Math.random()*9000));
+  try{sessionStorage.setItem('mmg_last',JSON.stringify({name:fd.get('name'),course:c.map(k=>ITEMS[k].name).join(' + '),ord:ord,total:total}))}catch(_){}
+  if(DASH_URL){try{await fetch(DASH_URL,{method:'POST',mode:'no-cors',body:new URLSearchParams({name:fd.get('name'),whatsapp:fd.get('whatsapp'),email:fd.get('email'),city:fd.get('city'),course:c.map(k=>ITEMS[k].name).join(' + '),amount:total,referral:fd.get('referral')||'',order_no:ord})})}catch(_){}}
+  localStorage.removeItem('mmg_cart');location.href='payment.html?ord='+ord+'&total='+total}
   else{document.getElementById('ckMsg').textContent='Order nahi gaya — dobara koshish karein ya WhatsApp par rabta karein.';btn.disabled=false;btn.textContent='Place Order → Payment'}
  }catch(err){document.getElementById('ckMsg').textContent='Internet masla lag raha hai — dobara koshish karein.';btn.disabled=false;btn.textContent='Place Order → Payment'}
 });
@@ -185,16 +201,6 @@ document.getElementById('ckForm').addEventListener('submit',async function(e){e.
   <div>© 2026 MM Global Training Institute — mmglobal.com.pk<br><span style="font-size:13px">Learn. Sell. Grow — Globally.</span></div>
   <div style="font-size:13.5px">info@mmglobal.com.pk</div>
 </div></footer>
-
-<script>
-const ITEMS={"ebay": {"name": "eBay Selling Boot Camp", "price": 12000, "img": "ebay.jpg", "dur": "Weekend Classes \u00b7 Online"}, "walmart": {"name": "Walmart Selling Boot Camp", "price": 12000, "img": "walmart.jpg", "dur": "Weekend Classes \u00b7 Online"}, "shopify": {"name": "Shopify eCommerce Boot Camp", "price": 10000, "img": "shopify.jpg", "dur": "Weekday Classes \u00b7 Online"}, "importing": {"name": "International Trade Pro \u2014 Importing", "price": 25000, "img": "importing.jpg", "dur": "Weekend Classes \u00b7 Online"}, "b1": {"name": "Bundle: eBay + Walmart", "price": 21600, "img": "ebay.jpg", "dur": "Weekend Classes \u00b7 Online"}, "b2": {"name": "Bundle: eBay + Walmart + Shopify", "price": 28900, "img": "shopify.jpg", "dur": "Weekend + Weekday \u00b7 Online"}, "b3": {"name": "Bundle: All 4 Courses", "price": 47200, "img": "importing.jpg", "dur": "Weekend + Weekday \u00b7 Online"}};
-function getCart(){try{return JSON.parse(localStorage.getItem('mmg_cart')||'[]')}catch(e){return[]}}
-function setCart(c){localStorage.setItem('mmg_cart',JSON.stringify(c));updCount()}
-function updCount(){const el=document.getElementById('ccount');if(el)el.textContent=getCart().length}
-function addCart(k){let c=getCart();if(!c.includes(k)){c.push(k);setCart(c)}toast(ITEMS[k].name+' — cart mein add ho gaya ✓');updCount()}
-function toast(m){let t=document.getElementById('toast');if(!t){t=document.createElement('div');t.id='toast';t.className='toast';document.body.appendChild(t)}t.textContent=m;t.classList.remove('hide');setTimeout(()=>t.classList.add('hide'),2600)}
-updCount();
-</script>
 
 </body>
 </html>

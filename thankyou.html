@@ -142,18 +142,21 @@ footer img{width:56px;height:56px;border-radius:10px;background:#fff;padding:3px
   <a href="cart.html"><button class="cartbtn">🛒 Cart <em id="ccount">0</em></button></a>
 </div></header>
 
+
 <div class="wrap">
   <div class="panel ok" style="max-width:640px;margin-left:auto;margin-right:auto">
     <div class="tick">✓</div>
     <h1 class="serif" style="font-size:30px;color:var(--navy)">Thank You! Your Booking Has Been Received.</h1>
     <p style="color:var(--mut);margin:10px 0 4px">Order <b id="thOrd" style="color:var(--navy)">—</b></p>
     <p style="color:var(--mut)">We've received your details and our team will reach out to you shortly on WhatsApp with your class schedule.</p>
+    <p id="thSum" style="color:var(--mut);margin-top:8px"></p>
     <a class="btn navy" href="index.html" style="margin-top:18px">Back to Home</a>
   </div>
 </div>
 <script>
 const q=new URLSearchParams(location.search);
 if(q.get('ord'))document.getElementById('thOrd').textContent='#'+q.get('ord');
+try{const L=JSON.parse(sessionStorage.getItem('mmg_last')||'null');if(L&&L.name){document.getElementById('thSum').innerHTML='<b style="color:var(--navy)">'+L.name+'</b> — '+L.course+' — Total Rs '+Number(L.total).toLocaleString('en-PK')}}catch(e){}
 </script>
 <footer><div class="wrap">
   <img src="logo.png" alt="MM Global">

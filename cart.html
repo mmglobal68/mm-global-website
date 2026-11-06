@@ -142,12 +142,23 @@ footer img{width:56px;height:56px;border-radius:10px;background:#fff;padding:3px
   <a href="cart.html"><button class="cartbtn">🛒 Cart <em id="ccount">0</em></button></a>
 </div></header>
 
+<script>
+const ITEMS={"ebay": {"name": "eBay Selling Boot Camp", "price": 12000, "img": "ebay.jpg", "dur": "Weekend Classes \u00b7 Online"}, "walmart": {"name": "Walmart Selling Boot Camp", "price": 12000, "img": "walmart.jpg", "dur": "Weekend Classes \u00b7 Online"}, "shopify": {"name": "Shopify eCommerce Boot Camp", "price": 10000, "img": "shopify.jpg", "dur": "Weekday Classes \u00b7 Online"}, "importing": {"name": "International Trade Pro \u2014 Importing", "price": 25000, "img": "importing.jpg", "dur": "Weekend Classes \u00b7 Online"}, "b1": {"name": "Bundle: eBay + Walmart", "price": 21600, "img": "ebay.jpg", "dur": "Weekend Classes \u00b7 Online"}, "b2": {"name": "Bundle: eBay + Walmart + Shopify", "price": 28900, "img": "shopify.jpg", "dur": "Weekend + Weekday \u00b7 Online"}, "b3": {"name": "Bundle: All 4 Courses", "price": 47200, "img": "importing.jpg", "dur": "Weekend + Weekday \u00b7 Online"}};
+function getCart(){try{return JSON.parse(localStorage.getItem('mmg_cart')||'[]')}catch(e){return[]}}
+function setCart(c){localStorage.setItem('mmg_cart',JSON.stringify(c));updCount()}
+function updCount(){const el=document.getElementById('ccount');if(el)el.textContent=getCart().length}
+function addCart(k){let c=getCart();if(!c.includes(k)){c.push(k);setCart(c)}toast(ITEMS[k].name+' — cart mein add ho gaya ✓');updCount()}
+function toast(m){let t=document.getElementById('toast');if(!t){t=document.createElement('div');t.id='toast';t.className='toast';document.body.appendChild(t)}t.textContent=m;t.classList.remove('hide');setTimeout(()=>t.classList.add('hide'),2600)}
+updCount();
+</script>
+
+
 <div class="wrap">
   <h1 class="serif ptitle">Your Cart</h1>
   <div class="panel" style="margin-top:16px">
     <div id="cartRows"></div>
     <div class="tot"><span>Total</span><span id="cartTotal">Rs 0</span></div>
-    <p style="color:var(--mut);font-size:13.5px">Bundle &amp; referral discounts are already included in the prices shown.</p>
+    <p style="color:var(--mut);font-size:13.5px">Bundle prices pehle se discounted hain — koi hidden charges nahi.</p>
     <a class="btn gold big" href="checkout.html" style="text-align:center">Proceed to Checkout →</a>
     <a class="btn big" href="index.html#trainings" style="background:#fff;border:1.6px solid var(--navy);color:var(--navy);text-align:center">Continue Browsing</a>
   </div>
@@ -165,16 +176,6 @@ renderCart();
   <div>© 2026 MM Global Training Institute — mmglobal.com.pk<br><span style="font-size:13px">Learn. Sell. Grow — Globally.</span></div>
   <div style="font-size:13.5px">info@mmglobal.com.pk</div>
 </div></footer>
-
-<script>
-const ITEMS={"ebay": {"name": "eBay Selling Boot Camp", "price": 12000, "img": "ebay.jpg", "dur": "Weekend Classes \u00b7 Online"}, "walmart": {"name": "Walmart Selling Boot Camp", "price": 12000, "img": "walmart.jpg", "dur": "Weekend Classes \u00b7 Online"}, "shopify": {"name": "Shopify eCommerce Boot Camp", "price": 10000, "img": "shopify.jpg", "dur": "Weekday Classes \u00b7 Online"}, "importing": {"name": "International Trade Pro \u2014 Importing", "price": 25000, "img": "importing.jpg", "dur": "Weekend Classes \u00b7 Online"}, "b1": {"name": "Bundle: eBay + Walmart", "price": 21600, "img": "ebay.jpg", "dur": "Weekend Classes \u00b7 Online"}, "b2": {"name": "Bundle: eBay + Walmart + Shopify", "price": 28900, "img": "shopify.jpg", "dur": "Weekend + Weekday \u00b7 Online"}, "b3": {"name": "Bundle: All 4 Courses", "price": 47200, "img": "importing.jpg", "dur": "Weekend + Weekday \u00b7 Online"}};
-function getCart(){try{return JSON.parse(localStorage.getItem('mmg_cart')||'[]')}catch(e){return[]}}
-function setCart(c){localStorage.setItem('mmg_cart',JSON.stringify(c));updCount()}
-function updCount(){const el=document.getElementById('ccount');if(el)el.textContent=getCart().length}
-function addCart(k){let c=getCart();if(!c.includes(k)){c.push(k);setCart(c)}toast(ITEMS[k].name+' — cart mein add ho gaya ✓');updCount()}
-function toast(m){let t=document.getElementById('toast');if(!t){t=document.createElement('div');t.id='toast';t.className='toast';document.body.appendChild(t)}t.textContent=m;t.classList.remove('hide');setTimeout(()=>t.classList.add('hide'),2600)}
-updCount();
-</script>
 
 </body>
 </html>
