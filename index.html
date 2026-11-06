@@ -95,6 +95,27 @@
   .slider .dot{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.55);cursor:pointer}
   .slider .dot.on{background:var(--gold)}
   .storyimg{width:100%;height:330px;object-fit:cover;border-radius:16px;margin:0 auto 30px;display:block;max-width:840px}
+  /* Sales snapshots */
+  .sswrap{max-width:860px;margin:0 auto}
+  .ssslider{position:relative;height:340px}
+  .sscard{position:absolute;inset:0;background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:0 18px 44px rgba(10,31,68,.10);padding:28px 32px;opacity:0;transition:opacity .8s ease;pointer-events:none}
+  .sscard.on{opacity:1;pointer-events:auto}
+  .sscard .hd{display:flex;align-items:center;gap:12px;margin-bottom:8px}
+  .sscard .pdot{width:40px;height:40px;border-radius:11px;display:flex;align-items:center;justify-content:center;color:#fff;font-family:'Manrope';font-weight:800;font-size:18px}
+  .sscard .hd h3{color:var(--navy);font-size:21px}
+  .sscard .hd .sub{color:var(--mut);font-size:13px}
+  .demo{margin-left:auto;background:#fdf3d7;color:#8a6d1f;border:1.5px dashed var(--gold);font-weight:800;font-size:12px;letter-spacing:1.5px;padding:5px 12px;border-radius:999px}
+  .ssrow{display:flex;gap:14px;flex-wrap:wrap;margin:14px 0 18px}
+  .ssstat{flex:1;min-width:130px;background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:12px 16px}
+  .ssstat b{display:block;font-family:'Manrope';font-size:23px;color:var(--navy)}
+  .ssstat span{font-size:12.5px;color:var(--mut);font-weight:600}
+  .bars{display:flex;align-items:flex-end;gap:9px;height:86px;padding-top:6px}
+  .bars i{flex:1;border-radius:6px 6px 0 0;background:linear-gradient(180deg,var(--gold2),var(--gold))}
+  .bars i:nth-child(even){background:linear-gradient(180deg,var(--navy3),var(--navy))}
+  .ssdots{display:flex;gap:8px;justify-content:center;margin-top:18px}
+  .ssdots .dot{width:10px;height:10px;border-radius:50%;background:#ccd3e0;cursor:pointer}
+  .ssdots .dot.on{background:var(--gold)}
+  @media(max-width:640px){.ssslider{height:380px}.sscard{padding:22px 20px}}
   /* Service cards */
   .svc{background:#fff;border:1px solid var(--line);border-radius:16px;padding:30px 26px;box-shadow:0 10px 30px rgba(10,31,68,.05)}
   .svc .ic{width:50px;height:50px;border-radius:50%;background:#f3ead0;display:flex;align-items:center;justify-content:center;margin-bottom:16px}
@@ -217,6 +238,51 @@
     <div class="stat"><b>2018</b><span>Selling Experience Since</span></div>
   </div>
 </div>
+
+
+<section style="padding:64px 0 70px">
+  <div class="wrap">
+    <div class="stitle"><div class="kick">SALES SNAPSHOTS</div><h2>Inside The <em>Platforms</em></h2><p>Demo previews — real sales screenshots from our own accounts are being added.</p></div>
+    <div class="sswrap">
+      <div class="ssslider" id="ssslider">
+      <div class="sscard on">
+        <div class="hd"><div class="pdot" style="background:#274b8f">e</div><div><h3>eBay</h3><div class="sub">Seller Dashboard · Last 30 Days</div></div><span class="demo">DEMO</span></div>
+        <div class="ssrow">
+          <div class="ssstat"><b>$8,240</b><span>Total Sales</span></div>
+          <div class="ssstat"><b>312</b><span>Orders</span></div>
+          <div class="ssstat"><b>3.1%</b><span>Conversion</span></div>
+        </div>
+        <div class="bars"><i style="height:35%"></i><i style="height:50%"></i><i style="height:42%"></i><i style="height:66%"></i><i style="height:58%"></i><i style="height:80%"></i><i style="height:95%"></i></div>
+      </div><div class="sscard">
+        <div class="hd"><div class="pdot" style="background:#2f6db3">W</div><div><h3>Walmart</h3><div class="sub">Seller Dashboard · Last 30 Days</div></div><span class="demo">DEMO</span></div>
+        <div class="ssrow">
+          <div class="ssstat"><b>$15,670</b><span>Total Sales</span></div>
+          <div class="ssstat"><b>486</b><span>Orders</span></div>
+          <div class="ssstat"><b>3.8%</b><span>Conversion</span></div>
+        </div>
+        <div class="bars"><i style="height:45%"></i><i style="height:40%"></i><i style="height:62%"></i><i style="height:55%"></i><i style="height:74%"></i><i style="height:88%"></i><i style="height:100%"></i></div>
+      </div><div class="sscard">
+        <div class="hd"><div class="pdot" style="background:#8a6d1f">a</div><div><h3>Amazon</h3><div class="sub">Seller Dashboard · Last 30 Days</div></div><span class="demo">DEMO</span></div>
+        <div class="ssrow">
+          <div class="ssstat"><b>$21,390</b><span>Total Sales</span></div>
+          <div class="ssstat"><b>640</b><span>Orders</span></div>
+          <div class="ssstat"><b>4.2%</b><span>Conversion</span></div>
+        </div>
+        <div class="bars"><i style="height:30%"></i><i style="height:48%"></i><i style="height:60%"></i><i style="height:52%"></i><i style="height:78%"></i><i style="height:85%"></i><i style="height:98%"></i></div>
+      </div><div class="sscard">
+        <div class="hd"><div class="pdot" style="background:#5a4305">S</div><div><h3>Shopify</h3><div class="sub">Seller Dashboard · Last 30 Days</div></div><span class="demo">DEMO</span></div>
+        <div class="ssrow">
+          <div class="ssstat"><b>Rs 486,500</b><span>Total Sales</span></div>
+          <div class="ssstat"><b>218</b><span>Orders</span></div>
+          <div class="ssstat"><b>2.9%</b><span>Conversion</span></div>
+        </div>
+        <div class="bars"><i style="height:40%"></i><i style="height:58%"></i><i style="height:46%"></i><i style="height:70%"></i><i style="height:64%"></i><i style="height:84%"></i><i style="height:92%"></i></div>
+      </div>
+      </div>
+      <div class="ssdots" id="ssdots"><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+    </div>
+  </div>
+</section>
 
 <section>
   <div class="wrap">
@@ -385,6 +451,10 @@
     function go(n){ slides[i].classList.remove('on'); dots[i].classList.remove('on'); i=n; slides[i].classList.add('on'); dots[i].classList.add('on'); }
     setInterval(function(){ go((i+1)%slides.length); }, 4000);
     dots.forEach(function(d,k){ d.addEventListener('click', function(){ go(k); }); });
+    var scards=document.querySelectorAll('#ssslider .sscard'), sdots=document.querySelectorAll('#ssdots .dot'), j=0;
+    function sgo(n){ scards[j].classList.remove('on'); sdots[j].classList.remove('on'); j=n; scards[j].classList.add('on'); sdots[j].classList.add('on'); }
+    setInterval(function(){ sgo((j+1)%scards.length); }, 4500);
+    sdots.forEach(function(d,k){ d.addEventListener('click', function(){ sgo(k); }); });
   })();
 </script>
 </body>
