@@ -86,6 +86,15 @@
   .course li:before{content:"✓";position:absolute;left:0;color:var(--gold);font-weight:800}
   .course .cb a{margin-top:auto;color:var(--navy);font-weight:800;text-decoration:none}
   .course .cb a:hover{color:var(--gold)}
+  .hcard img.photo{width:calc(100% + 56px);max-width:none;margin:-30px -28px 22px;height:225px;object-fit:cover;display:block}
+  .cimg{width:100%;height:150px;object-fit:cover;display:block}
+  .slider{position:relative;width:calc(100% + 56px);margin:-30px -28px 22px;height:225px;overflow:hidden;background:var(--navy2)}
+  .slider img.slide{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;margin:0;opacity:0;transition:opacity .9s ease}
+  .slider img.slide.on{opacity:1}
+  .slider .dots{position:absolute;left:0;right:0;bottom:12px;display:flex;gap:7px;justify-content:center;z-index:3}
+  .slider .dot{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.55);cursor:pointer}
+  .slider .dot.on{background:var(--gold)}
+  .storyimg{width:100%;height:330px;object-fit:cover;border-radius:16px;margin:0 auto 30px;display:block;max-width:840px}
   /* Service cards */
   .svc{background:#fff;border:1px solid var(--line);border-radius:16px;padding:30px 26px;box-shadow:0 10px 30px rgba(10,31,68,.05)}
   .svc .ic{width:50px;height:50px;border-radius:50%;background:#f3ead0;display:flex;align-items:center;justify-content:center;margin-bottom:16px}
@@ -170,7 +179,7 @@
       <a href="#story">Our Story</a>
       <a href="#faq">FAQ</a>
       <a href="#contact">Contact</a>
-      <a class="btn" href="#apply">Apply Now</a>
+      <a class="btn" href="apply.html">Apply Now</a>
     </nav>
   </div>
 </header>
@@ -182,11 +191,17 @@
       <h1>Learn. Sell. Grow — <span>Globally.</span></h1>
       <p class="lead">Practical e-commerce training and done-for-you services from Pakistan — learn eBay, Walmart, Amazon and Shopify from people who sell themselves.</p>
       <div class="cta">
-        <a class="btn" href="#apply">Apply Now</a>
+        <a class="btn" href="apply.html">Apply Now</a>
         <a class="btn ghost" href="#courses">Explore Courses</a>
       </div>
     </div>
     <div class="hcard">
+      <div class="slider" id="hslider">
+        <img class="slide on" src="hero.jpg" alt="Warehouse team packing customer orders">
+        <img class="slide" src="importing.jpg" alt="Cargo ship at a container port">
+        <img class="slide" src="shopify.jpg" alt="Working on an online store on a laptop">
+        <div class="dots"><span class="dot on"></span><span class="dot"></span><span class="dot"></span></div>
+      </div>
       <img src="logo.png" alt="MM Global Training Institute">
       <div class="q">"We teach what we <span>practice</span> — and we practice what we <span>teach</span>."</div>
       <div class="plats"><b>eBay</b><b>Walmart</b><b>Amazon</b><b>Shopify</b><b>Importing</b></div>
@@ -228,40 +243,44 @@
     <div class="stitle"><div class="kick">TRAINING PROGRAMS</div><h2>Our <em>Courses</em></h2><p>Every course is practical from day one. Fees and batch schedule are shared on WhatsApp after you apply.</p></div>
     <div class="grid g4">
       <div class="course c-ebay">
+        <img class="cimg" src="ebay.jpg" alt="Seller organising products on warehouse shelves">
         <div class="ch"><div class="pl">MARKETPLACE COURSE</div><h3>eBay Course</h3></div>
         <div class="cb"><ul>
           <li>Seller account setup, the right way</li>
           <li>Product research &amp; winning listings</li>
           <li>Pricing, shipping &amp; order handling</li>
           <li>Growing from first sale to steady sales</li>
-        </ul><a href="#apply" onclick="pickCourse('eBay')">Apply for this course →</a></div>
+        </ul><a href="apply.html?course=eBay">Apply for this course →</a></div>
       </div>
       <div class="course c-wal">
+        <img class="cimg" src="walmart.jpg" alt="Team loading packages for delivery">
         <div class="ch"><div class="pl">MARKETPLACE COURSE</div><h3>Walmart Course</h3></div>
         <div class="cb"><ul>
           <li>Walmart seller approval &amp; onboarding</li>
           <li>Catalog setup &amp; listing quality</li>
           <li>Winning the Buy Box</li>
           <li>Ads &amp; growth strategies that work</li>
-        </ul><a href="#apply" onclick="pickCourse('Walmart')">Apply for this course →</a></div>
+        </ul><a href="apply.html?course=Walmart">Apply for this course →</a></div>
       </div>
       <div class="course c-shop">
+        <img class="cimg" src="shopify.jpg" alt="Working on an online store on a laptop">
         <div class="ch"><div class="pl">STORE &amp; BRAND COURSE</div><h3>Shopify Course</h3></div>
         <div class="cb"><ul>
           <li>Store setup, theme &amp; product pages</li>
           <li>Payments, shipping &amp; policies for Pakistan</li>
           <li>Meta ads that bring real orders</li>
           <li>Building your own brand, step by step</li>
-        </ul><a href="#apply" onclick="pickCourse('Shopify')">Apply for this course →</a></div>
+        </ul><a href="apply.html?course=Shopify">Apply for this course →</a></div>
       </div>
       <div class="course c-imp">
+        <img class="cimg" src="importing.jpg" alt="Cargo ship at a container port">
         <div class="ch"><div class="pl">SOURCING COURSE</div><h3>Importing Course</h3></div>
         <div class="cb"><ul>
           <li>Finding profitable products to import</li>
           <li>Sourcing &amp; supplier verification</li>
           <li>Shipping, customs &amp; true landed cost</li>
           <li>Wholesale importing, done safely</li>
-        </ul><a href="#apply" onclick="pickCourse('Importing')">Apply for this course →</a></div>
+        </ul><a href="apply.html?course=Importing">Apply for this course →</a></div>
       </div>
     </div>
   </div>
@@ -304,6 +323,7 @@
 <section id="story">
   <div class="wrap">
     <div class="stitle"><div class="kick">ABOUT US</div><h2>Our <em>Story</em></h2></div>
+    <img class="storyimg" src="story.jpg" alt="Business partners discussing their work">
     <div class="story" style="max-width:840px;margin:0 auto">
       <p>MM Global began where every Pakistani seller begins: doing it ourselves. Mohsin has been in e-commerce since 2019 — selling on Amazon, eBay and Walmart, and importing products at wholesale level. Mubashar has been in social media marketing since 2018 and running Shopify stores and brands since 2020 — building stores, running ads, launching products and dealing with real customers every single day.</p>
       <p>For years, people around us kept asking how online selling actually works — and we saw the same problem everywhere. They didn't need more theory. They needed someone who had actually done it, showing them step by step.</p>
@@ -330,40 +350,11 @@
   <div class="wrap">
     <h2>Applications Open — <span>Ready to Start?</span></h2>
     <p>Seats in each batch are limited. Apply now and our team will contact you on WhatsApp.</p>
-    <a class="btn" href="#apply">Apply Now</a>
+    <a class="btn" href="apply.html">Apply Now</a>
   </div>
 </div>
 
-<section id="apply">
-  <div class="wrap">
-    <div class="stitle"><div class="kick">JOIN US</div><h2>Course <em>Registration</em></h2><p>Fill this form — our team will contact you on WhatsApp.</p></div>
-    <div id="thanks" class="thanks">Thank you! Your application has been received. Our team will contact you on WhatsApp.</div>
-    <div class="formbox">
-      <form action="https://formsubmit.co/info@mmglobal.com.pk" method="POST">
-        <input type="hidden" name="_subject" value="New Course Registration — MM Global Training Institute">
-        <input type="hidden" name="_captcha" value="true">
-        <input type="hidden" name="_template" value="table">
-        <input type="hidden" name="_next" value="https://mmglobal68.github.io/mm-global-website/?submitted=1#apply">
-        <label for="fname">Full Name</label>
-        <input id="fname" name="Full Name" type="text" required placeholder="Your full name">
-        <label for="fwa">WhatsApp Number</label>
-        <input id="fwa" name="WhatsApp Number" type="tel" required placeholder="03XX-XXXXXXX">
-        <label for="fcity">City</label>
-        <input id="fcity" name="City" type="text" required placeholder="Your city">
-        <label for="fcourse">Course</label>
-        <select id="fcourse" name="Course" required>
-          <option value="">Select a course…</option>
-          <option>eBay</option>
-          <option>Walmart</option>
-          <option>Shopify</option>
-          <option>Importing</option>
-        </select>
-        <button class="btn" type="submit">Submit Application</button>
-        <p class="fnote">By submitting, you agree to be contacted on WhatsApp about our courses and services.<br>Prefer email? Write to us at <a href="mailto:info@mmglobal.com.pk">info@mmglobal.com.pk</a></p>
-      </form>
-    </div>
-  </div>
-</section>
+
 
 <section id="contact" class="alt" style="padding:56px 0">
   <div class="wrap" style="text-align:center">
@@ -379,7 +370,7 @@
         <div class="fb"><img src="logo.png" alt="MM Global"><b>MM Global<small>TRAINING INSTITUTE</small></b></div>
         <p>Practical e-commerce training and done-for-you services from Pakistan. We teach what we practice — and we practice what we teach.</p>
       </div>
-      <div><h4>Quick Links</h4><a href="#courses">Courses</a><a href="#services">Services</a><a href="#story">Our Story</a><a href="#faq">FAQ</a><a href="#apply">Apply Now</a></div>
+      <div><h4>Quick Links</h4><a href="#courses">Courses</a><a href="#services">Services</a><a href="#story">Our Story</a><a href="#faq">FAQ</a><a href="apply.html">Apply Now</a></div>
       <div><h4>Courses</h4><a href="#courses">eBay Course</a><a href="#courses">Walmart Course</a><a href="#courses">Shopify Course</a><a href="#courses">Importing Course</a></div>
       <div><h4>Contact</h4><a href="mailto:info@mmglobal.com.pk">info@mmglobal.com.pk</a><a href="https://mmglobal.com.pk">mmglobal.com.pk</a></div>
     </div>
@@ -387,11 +378,14 @@
   </div>
 </footer>
 
+
 <script>
-  function pickCourse(c){ var s=document.getElementById('fcourse'); if(s){ s.value=c; } }
-  if(new URLSearchParams(location.search).get('submitted')==='1'){
-    var t=document.getElementById('thanks'); if(t){ t.style.display='block'; }
-  }
+  (function(){
+    var slides=document.querySelectorAll('#hslider .slide'), dots=document.querySelectorAll('#hslider .dot'), i=0;
+    function go(n){ slides[i].classList.remove('on'); dots[i].classList.remove('on'); i=n; slides[i].classList.add('on'); dots[i].classList.add('on'); }
+    setInterval(function(){ go((i+1)%slides.length); }, 4000);
+    dots.forEach(function(d,k){ d.addEventListener('click', function(){ go(k); }); });
+  })();
 </script>
 </body>
 </html>
