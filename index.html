@@ -95,6 +95,15 @@
   .slider .dot{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.55);cursor:pointer}
   .slider .dot.on{background:var(--gold)}
   .storyimg{width:100%;height:330px;object-fit:cover;border-radius:16px;margin:0 auto 30px;display:block;max-width:840px}
+  .course,.svc,.offer,.founder{transition:transform .18s ease, box-shadow .18s ease}
+  .course:hover,.svc:hover,.offer:hover,.founder:hover{transform:translateY(-5px);box-shadow:0 20px 44px rgba(10,31,68,.13)}
+  .pstrip{background:#fff;border-bottom:1px solid var(--line);padding:20px 0}
+  .pstrip .wrap{display:flex;align-items:center;gap:14px;flex-wrap:wrap;justify-content:center}
+  .pstrip span{font-size:12.5px;letter-spacing:2.5px;font-weight:700;color:var(--mut)}
+  .pstrip b{font-family:'Manrope';font-weight:800;font-size:19px;color:var(--navy);opacity:.75}
+  .pstrip i{color:var(--gold);font-style:normal;font-weight:800}
+  .meta{display:flex;gap:7px;flex-wrap:wrap;margin:-6px 0 16px}
+  .meta b{background:var(--bg);border:1px solid var(--line);color:var(--navy);font-size:12px;font-weight:700;padding:4px 10px;border-radius:999px}
   /* Sales snapshots */
   .sswrap{max-width:860px;margin:0 auto}
   .ssslider{position:relative;height:340px}
@@ -240,6 +249,8 @@
 </div>
 
 
+<div class="pstrip"><div class="wrap"><span>PLATFORMS WE TEACH &amp; WORK ON</span><b>eBay</b><i>•</i><b>Walmart</b><i>•</i><b>Amazon</b><i>•</i><b>Shopify</b><i>•</i><b>Meta Ads</b><i>•</i><b>Importing</b></div></div>
+
 <section style="padding:64px 0 70px">
   <div class="wrap">
     <div class="stitle"><div class="kick">SALES SNAPSHOTS</div><h2>Inside The <em>Platforms</em></h2><p>Demo previews — real sales screenshots from our own accounts are being added.</p></div>
@@ -311,7 +322,8 @@
       <div class="course c-ebay">
         <img class="cimg" src="ebay.jpg" alt="Seller organising products on warehouse shelves">
         <div class="ch"><div class="pl">MARKETPLACE COURSE</div><h3>eBay Course</h3></div>
-        <div class="cb"><ul>
+        <div class="cb"><div class="meta"><b>Practical Training</b><b>Step-by-Step</b><b>WhatsApp Support</b></div>
+        <ul>
           <li>Seller account setup, the right way</li>
           <li>Product research &amp; winning listings</li>
           <li>Pricing, shipping &amp; order handling</li>
@@ -321,7 +333,8 @@
       <div class="course c-wal">
         <img class="cimg" src="walmart.jpg" alt="Team loading packages for delivery">
         <div class="ch"><div class="pl">MARKETPLACE COURSE</div><h3>Walmart Course</h3></div>
-        <div class="cb"><ul>
+        <div class="cb"><div class="meta"><b>Practical Training</b><b>Step-by-Step</b><b>WhatsApp Support</b></div>
+        <ul>
           <li>Walmart seller approval &amp; onboarding</li>
           <li>Catalog setup &amp; listing quality</li>
           <li>Winning the Buy Box</li>
@@ -331,7 +344,8 @@
       <div class="course c-shop">
         <img class="cimg" src="shopify.jpg" alt="Working on an online store on a laptop">
         <div class="ch"><div class="pl">STORE &amp; BRAND COURSE</div><h3>Shopify Course</h3></div>
-        <div class="cb"><ul>
+        <div class="cb"><div class="meta"><b>Practical Training</b><b>Step-by-Step</b><b>WhatsApp Support</b></div>
+        <ul>
           <li>Store setup, theme &amp; product pages</li>
           <li>Payments, shipping &amp; policies for Pakistan</li>
           <li>Meta ads that bring real orders</li>
@@ -341,7 +355,8 @@
       <div class="course c-imp">
         <img class="cimg" src="importing.jpg" alt="Cargo ship at a container port">
         <div class="ch"><div class="pl">SOURCING COURSE</div><h3>Importing Course</h3></div>
-        <div class="cb"><ul>
+        <div class="cb"><div class="meta"><b>Practical Training</b><b>Step-by-Step</b><b>WhatsApp Support</b></div>
+        <ul>
           <li>Finding profitable products to import</li>
           <li>Sourcing &amp; supplier verification</li>
           <li>Shipping, customs &amp; true landed cost</li>
@@ -417,6 +432,7 @@
     <h2>Applications Open — <span>Ready to Start?</span></h2>
     <p>Seats in each batch are limited. Apply now and our team will contact you on WhatsApp.</p>
     <a class="btn" href="apply.html">Apply Now</a>
+    <a class="btn ghost" href="#contact">Free Consultation on WhatsApp</a>
   </div>
 </div>
 
@@ -426,6 +442,10 @@
   <div class="wrap" style="text-align:center">
     <div class="stitle" style="margin-bottom:18px"><div class="kick">CONTACT</div><h2>Get in <em>Touch</em></h2><p>We would love to talk to you.</p></div>
     <a href="mailto:info@mmglobal.com.pk" style="color:var(--navy);font-weight:800;font-size:21px;text-decoration:none;font-family:'Manrope'">info@mmglobal.com.pk</a>
+    <div style="margin-top:26px">
+      <img src="whatsapp-qr.jpg" alt="MM Global Training Institute WhatsApp QR code" style="width:230px;max-width:75%;border-radius:14px;border:1px solid var(--line);box-shadow:0 10px 26px rgba(10,31,68,.10)">
+      <p style="color:var(--mut);margin-top:12px;font-size:14.5px">Scan to start a WhatsApp chat with us</p>
+    </div>
   </div>
 </section>
 
